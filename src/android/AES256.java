@@ -30,7 +30,7 @@ public class AES256 extends CordovaPlugin {
     private static final String GENERATE_SECURE_KEY = "generateSecureKey";
     private static final String GENERATE_SECURE_IV = "generateSecureIV";
 
-    private static final String CIPHER_TRANSFORMATION = "AES/CBC/PKCS5PADDING";
+    private static final String CIPHER_TRANSFORMATION = "AES/CBC/PKCS7PADDING";
     private static final int PBKDF2_ITERATION_COUNT = 1001;
     private static final int PBKDF2_KEY_LENGTH = 256;
     private static final int SECURE_IV_LENGTH = 64;
@@ -85,11 +85,12 @@ public class AES256 extends CordovaPlugin {
      * @throws Exception
      */
     private String encrypt(String secureKey, String value, String iv) throws Exception {
-        byte[] pbkdf2SecuredKey = generatePBKDF2(secureKey.toCharArray(), PBKDF2_SALT.getBytes("UTF-8"),
-                PBKDF2_ITERATION_COUNT, PBKDF2_KEY_LENGTH);
+    //    byte[] pbkdf2SecuredKey = generatePBKDF2(secureKey.toCharArray(), PBKDF2_SALT.getBytes("UTF-8"),
+    //            PBKDF2_ITERATION_COUNT, PBKDF2_KEY_LENGTH);
 
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
-        SecretKeySpec secretKeySpec = new SecretKeySpec(pbkdf2SecuredKey, "AES");
+    //    SecretKeySpec secretKeySpec = new SecretKeySpec(pbkdf2SecuredKey, "AES");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secureKey.getBytes("UTF-8"), "AES");
 
         Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
@@ -112,11 +113,12 @@ public class AES256 extends CordovaPlugin {
      * @throws Exception
      */
     private String decrypt(String secureKey, String value, String iv) throws Exception {
-        byte[] pbkdf2SecuredKey = generatePBKDF2(secureKey.toCharArray(), PBKDF2_SALT.getBytes("UTF-8"),
-                PBKDF2_ITERATION_COUNT, PBKDF2_KEY_LENGTH);
+    //    byte[] pbkdf2SecuredKey = generatePBKDF2(secureKey.toCharArray(), PBKDF2_SALT.getBytes("UTF-8"),
+    //            PBKDF2_ITERATION_COUNT, PBKDF2_KEY_LENGTH);
 
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
-        SecretKeySpec secretKeySpec = new SecretKeySpec(pbkdf2SecuredKey, "AES");
+    //    SecretKeySpec secretKeySpec = new SecretKeySpec(pbkdf2SecuredKey, "AES");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secureKey.getBytes("UTF-8"), "AES");
 
         Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
         cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
