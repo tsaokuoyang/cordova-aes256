@@ -57,7 +57,7 @@
         
         let password = command.arguments[0] as? String ?? ""
         
-        let secureKey:String? = PBKDF2.pbkdf2(hash:CCPBKDFAlgorithm(kCCPRFHmacAlgSHA1), password:password, salt:AES256CBC.generateSalt(), keyByteCount:AES256.SECURE_KEY_LENGTH, rounds:AES256.PBKDF2_ITERATION_COUNT)
+        let secureKey:String? = PBKDF2_1.pbkdf2(hash:CCPBKDFAlgorithm(kCCPRFHmacAlgSHA1), password:password, salt:AES256CBC.generateSalt(), keyByteCount:AES256.SECURE_KEY_LENGTH, rounds:AES256.PBKDF2_ITERATION_COUNT)
         
         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: secureKey)
         
@@ -76,7 +76,7 @@
         
         let password = command.arguments[0] as? String ?? ""
         
-        let secureIV:String? = PBKDF2.pbkdf2(hash:CCPBKDFAlgorithm(kCCPRFHmacAlgSHA1), password:password, salt:AES256CBC.generateSalt(), keyByteCount:AES256.SECURE_IV_LENGTH, rounds:AES256.PBKDF2_ITERATION_COUNT)
+        let secureIV:String? = PBKDF2_1.pbkdf2(hash:CCPBKDFAlgorithm(kCCPRFHmacAlgSHA1), password:password, salt:AES256CBC.generateSalt(), keyByteCount:AES256.SECURE_IV_LENGTH, rounds:AES256.PBKDF2_ITERATION_COUNT)
         
         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: secureIV)
         

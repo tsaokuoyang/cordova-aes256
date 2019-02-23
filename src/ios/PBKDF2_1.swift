@@ -1,4 +1,4 @@
-class PBKDF2 {
+class PBKDF2_1 {
     
     // Generates the key with specified length from the given password using pbkdf2 algorithm
     public class func pbkdf2(hash: CCPBKDFAlgorithm, password: String, salt: String, keyByteCount: Int, rounds: Int) -> String? {
@@ -24,7 +24,7 @@ class PBKDF2 {
             return nil;
         }
         
-        return PBKDF2.toHex(derivedKeyData)
+        return PBKDF2_1.toHex(derivedKeyData)
     }
     
     // Converts data to a hexadecimal string
