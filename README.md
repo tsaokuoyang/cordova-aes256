@@ -1,6 +1,6 @@
 # Cordova-AES256 Encryption And Decryption
 
-This _**cordova**_ _**ionic**_ plugin allows you to perform _**AES 256**_ encryption and decryption on the plain text. It's a cross-platform plugin which supports both Android and iOS. The encryption and decryption are performed on the device native layer so that the performance is much faster.
+This _**cordova**_ _**ionic**_ plugin allows you to perform _**AES 256**_ encryption and decryption on the plain text. It's a cross-platform plugin which supports both Android and iOS. The encryption and decryption are performed on the device native layer so that the performance is much faster. The entire operations is performed in the background thread.
 
 ### AES Encryption Mode
 AES 256 CBC mode encryption is used. For Android, PKCS5Padding is used and for iOS PKCS7Padding is used.
@@ -25,7 +25,7 @@ declare var cordova: any;
 @Injectable()
 export class AES256Provider {
 
-  secureKey: String = '123456789101234567890123456789011'; // Any string, the length should be 32
+  secureKey: String = '12345678910123456789012345678901'; // Any string, the length should be 32
   secureIV: String = '1234567891123456'; // Any string, the length should be 16
 
   constructor(private platform: Platform) {
@@ -54,7 +54,7 @@ export class AES256Provider {
 
   decrypt(secureKey, secureIV, encryptedData) {
     this.platform.ready().then(() => {
-      cordova.plugins.AES256.encrypt(secureKey, secureIV, encryptedData,
+      cordova.plugins.AES256.decrypt(secureKey, secureIV, encryptedData,
         (decryptedData) => {
           console.log('Decrypted Data----', decryptedData);
         }, (error) => {
@@ -95,10 +95,3 @@ export class AES256Provider {
 
 [https://github.com/SwiftyBeaver/AES256CBC](https://github.com/SwiftyBeaver/AES256CBC)
 
-# Known issues
-Sometimes you will see a warning message in the console like this:
-```
-2018-08-31 17:59:54.204442+0200 App Name[645:64889] THREAD WARNING: ['AES256'] took '43.134766' ms. Plugin should use a background thread.
-```
-
-It's by design and no error. See [https://github.com/Ideas2IT/cordova-aes256/issues/4](this issue) for more information on this warning.
