@@ -5,8 +5,9 @@ This _**cordova**_ _**ionic**_ plugin allows you to perform _**AES 256**_ encryp
 ### AES Encryption Mode
 AES 256 CBC mode encryption is used. For Android, PKCS5Padding is used and for iOS PKCS7Padding is used.
 
-- [Getting Started](https://github.com/Ideas2IT/cordova-aes256/blob/master/README.md#getting-started)
-- [References](https://github.com/Ideas2IT/cordova-aes256/blob/master/README.md#references)
+- [Getting Started](https://github.com/tsaokuoyang/cordova-aes256/blob/master/README.md#getting-started)
+- [iOS Quirks](https://github.com/tsaokuoyang/cordova-aes256/blob/master/README.md#references)
+- [References](https://github.com/tsaokuoyang/cordova-aes256/blob/master/README.md#ios-quirks)
 
 # Getting Started
 
@@ -106,4 +107,9 @@ Add belows to cordova project's config.xml
 [https://developer.android.com/reference/javax/crypto/Cipher](https://developer.android.com/reference/javax/crypto/Cipher)
 
 [https://github.com/SwiftyBeaver/AES256CBC](https://github.com/SwiftyBeaver/AES256CBC)
+
+[https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
+
+[https://github.com/blakgeek/cordova-plugin-cocoapods-support](https://github.com/blakgeek/cordova-plugin-cocoapods-support)
+
 
