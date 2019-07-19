@@ -11,7 +11,7 @@ AES 256 CBC mode encryption is used. For Android, PKCS5Padding is used and for i
 # Getting Started
 
 1. **Install Plugins**  
- _`ionic cordova plugin add cordova-plugin-aes256-encryption`_
+ _`ionic cordova plugin add https://github.com/tsaokuoyang/cordova-aes256`_
  
     _`cordova plugin add cordova-plugin-add-swift-support --save`_
  
