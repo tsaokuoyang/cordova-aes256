@@ -98,7 +98,7 @@ Add belows to cordova project's config.xml
 ```
 <platform name="ios">
   ...
-  <preference name="pods_ios_min_version" value="9.0" />
+  <preference name="deployment-target" value="9.0" />
   ...
 </platform>
 ```
