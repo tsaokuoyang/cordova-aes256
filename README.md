@@ -90,6 +90,18 @@ export class AES256Provider {
 }
 ```
 
+# iOS Quirks
+Add belows to cordova project's config.xml
+( for CryptoSwift pod install )
+
+```
+<platform name="ios">
+  ...
+  <preference name="pods_ios_min_version" value="9.0" />
+  ...
+</platform>
+```
+
 # References
 [https://developer.android.com/reference/javax/crypto/Cipher](https://developer.android.com/reference/javax/crypto/Cipher)
 
