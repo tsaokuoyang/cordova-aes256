@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-aes256-encryption" version="1.1.2"
+<plugin id="cordova-plugin-aes256-encryption" version="1.2.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>AES256</name>
     <js-module name="AES256" src="www/AES256.js">
         <clobbers target="cordova.plugins.AES256" />
     </js-module>
+    
+
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="AES256">
@@ -22,13 +24,15 @@
                 <param name="ios-package" value="AES256" />
             </feature>
         </config-file>
-        <header-file src="src/ios/AES256-Plugin-Bridging-Header.h" />
+        
+        <pod name="CryptoSwift" git="https://github.com/krzyzanowskim/CryptoSwift" branch="swift4" />
+
         <framework src="Security.framework" />
         <source-file src="src/ios/AES256.swift" />
         <source-file src="src/ios/AES256CBC.swift" />
         <source-file src="src/ios/PBKDF2_1.swift" />
-        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
-		<preference name="UseLegacySwiftLanguageVersion" value="true" />
-		<preference name="UseSwiftLanguageVersion" value="5" />	
+
+        <dependency id="cordova-plugin-cocoapod-support"/>
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.1"/>
     </platform>
 </plugin>

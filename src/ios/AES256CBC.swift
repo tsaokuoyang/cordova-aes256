@@ -940,9 +940,6 @@ private func arrayOfBytes<T>(value: T, length: Int? = nil) -> Array<UInt8> {
         bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
     }
 
-    valuePointer.deinitialize()
-    valuePointer.deallocate(capacity: 1)
-
     return bytes
 }
 
